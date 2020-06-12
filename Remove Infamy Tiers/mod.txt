@@ -1,0 +1,12 @@
+{
+	"name" : "Remove Infamy Tiers",
+	"description" : "Removes requirements for infamy tiers",
+	"author" : "Mr.Chen",
+	"contact" : "",
+	"version" : "1.0",
+	"blt_version" : 2,
+
+	"hooks" : [
+		{ "hook_id" : "lib/managers/infamymanager", "script_path" : "mod.lua" }
+	]	
+}
