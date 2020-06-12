@@ -41,5 +41,5 @@ Killing enemies in medium range replenishes 69% of the last damage taken as armo
 Outline on the files:
 - loc_EN.lua >>> localization and in game text description of perk deck
 - player.lua >>> contains fixes for health and armor being displayed right; contains the calculation of armor gained on kill
-- skilltree.lua >>> contains the player upgrades of each tier of the perk deck (doesn't matter since this perk deck costs 0)
+- skilltree.lua >>> contains the player upgrades of each tier of the perk deck; perk deck costs editable (pdc1-pdc9)
 - upgrades.lua >>> contains the numbers to tweak at; necessary documentation in the file; variables are sorted like the perk deck description at the top

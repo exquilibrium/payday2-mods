@@ -1,6 +1,17 @@
 Hooks:PostHook(SkillTreeTweakData, "init", "hustler_skilltree_init", function(self, tweak_data)
 	local s = tostring(table.maxn(self.specializations) + 1)
 
+	-- Perk deck costs
+	local pdc1 = 0
+	local pdc2 = 0
+	local pdc3 = 0
+	local pdc4 = 0
+	local pdc5 = 0
+	local pdc6 = 0
+	local pdc7 = 0
+	local pdc8 = 0
+	local pdc9 = 0
+
 	table.insert(self.specializations, {
 		name_id = "menu_st_spec_" .. s,
 		desc_id = "menu_st_spec_" .. s .. "_desc",
@@ -11,7 +22,7 @@ Hooks:PostHook(SkillTreeTweakData, "init", "hustler_skilltree_init", function(se
 				"hustlerHealthVisual",
 				"hustlerDodge"
 			},
-			cost = 0,
+			cost = pdc1,
 			icon_xy = {7, 6},
 			name_id = "menu_deck" .. s .. "_1",
 			desc_id = "menu_deck" .. s .. "_1_desc"
@@ -21,7 +32,7 @@ Hooks:PostHook(SkillTreeTweakData, "init", "hustler_skilltree_init", function(se
 			upgrades = {		--2
 				"weapon_passive_headshot_damage_multiplier"
 			},
-			cost = 0,
+			cost = pdc2,
 			icon_xy = {1, 0},
 			name_id = "menu_deck" .. s .. "_2",
 			desc_id = "menu_deck" .. s .. "_2_desc"
@@ -33,7 +44,7 @@ Hooks:PostHook(SkillTreeTweakData, "init", "hustler_skilltree_init", function(se
 				"hustlerNoArmor",
 				"hustlerDamageArmor"
 			},
-			cost = 0,
+			cost = pdc3,
 			icon_xy = {7, 7},
 			name_id = "menu_deck" .. s .. "_3",
 			desc_id = "menu_deck" .. s .. "_3_desc"
@@ -45,7 +56,7 @@ Hooks:PostHook(SkillTreeTweakData, "init", "hustler_skilltree_init", function(se
 				"player_passive_suspicion_bonus",
 				"player_passive_armor_movement_penalty_multiplier"
 			},
-			cost = 0,
+			cost = pdc4,
 			icon_xy = {3, 0},
 			name_id = "menu_deck" .. s .. "_4",
 			desc_id = "menu_deck" .. s .. "_4_desc"
@@ -56,7 +67,7 @@ Hooks:PostHook(SkillTreeTweakData, "init", "hustler_skilltree_init", function(se
 								--kills to armor
 				"hustlerKillArmor"
 			},
-			cost = 0,
+			cost = pdc5,
 			icon_xy = {2, 0},
 			name_id = "menu_deck" .. s .. "_5",
 			desc_id = "menu_deck" .. s .. "_5_desc"
@@ -67,7 +78,7 @@ Hooks:PostHook(SkillTreeTweakData, "init", "hustler_skilltree_init", function(se
 				"armor_kit",
 				"player_pick_up_ammo_multiplier"
 			},
-			cost = 0,
+			cost = pdc6,
 			icon_xy = {5, 0},
 			name_id = "menu_deck" .. s .. "_6",
 			desc_id = "menu_deck" .. s .. "_6_desc"
@@ -79,7 +90,7 @@ Hooks:PostHook(SkillTreeTweakData, "init", "hustler_skilltree_init", function(se
 				"hustlerArmorRaw",
 				"hustlerArmor"
 			},
-			cost = 0,
+			cost = pdc7,
 			icon_xy = {2, 7},
 			name_id = "menu_deck" .. s .. "_7",
 			desc_id = "menu_deck" .. s .. "_7_desc"
@@ -90,7 +101,7 @@ Hooks:PostHook(SkillTreeTweakData, "init", "hustler_skilltree_init", function(se
 				"weapon_passive_damage_multiplier",
 				"passive_doctor_bag_interaction_speed_multiplier"
 			},
-			cost = 0,
+			cost = pdc8,
 			icon_xy = {7, 0},
 			name_id = "menu_deck" .. s .. "_8",
 			desc_id = "menu_deck" .. s .. "_8_desc"
@@ -103,7 +114,7 @@ Hooks:PostHook(SkillTreeTweakData, "init", "hustler_skilltree_init", function(se
 				"hustlerKillArmorClose",
 				"player_passive_loot_drop_multiplier"	
 			},
-			cost = 0,
+			cost = pdc9,
 			icon_xy = {3, 1},
 			name_id = "menu_deck" .. s .. "_9",
 			desc_id = "menu_deck" .. s .. "_9_desc"
