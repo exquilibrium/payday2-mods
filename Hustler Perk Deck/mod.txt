@@ -1,0 +1,18 @@
+{
+	"name"	:   "Hustler Perk Deck",
+	"description"	:   "Ain't got time to die.",
+	"author"   :   "MrChen",
+	"image"	: "hustler.png"
+	"version" : "1.7",
+	"hooks"	:   [
+		{ "hook_id"	: "lib/tweak_data/skilltreetweakdata", "script_path" : "lua/skilltree.lua" },
+
+		{ "hook_id"	: "lib/tweak_data/upgradestweakdata", "script_path" : "lua/upgrades.lua" },
+
+		{ "hook_id"	: "lib/units/beings/player/playerdamage", "script_path" : "lua/player.lua" },
+
+		{ "hook_id"	: "lib/managers/playermanager", "script_path" : "lua/player.lua" },
+
+		{ "hook_id"	: "lib/managers/localizationmanager", "script_path" : "loc/loc_EN.lua" }
+	]
+}
