@@ -13,7 +13,7 @@ or string_id == "menu_deck" .. s .. "_3_desc" and "Damaging enemies increases Sw
 or string_id == "menu_deck" .. s .. "_4" and "Blending In"
 or string_id == "menu_deck" .. s .. "_4_desc" and "You gain ##+1## increased concealment.\n\nWhen wearing armor, your movement speed is ##15%## less affected.\n\nYou gain ##45%## more experience when you complete days and jobs."
 or string_id == "menu_deck" .. s .. "_5" and "Undying Berserker"
-or string_id == "menu_deck" .. s .. "_5_desc" and "You gain ##+45%## chance to automatically revive during bleedout."
+or string_id == "menu_deck" .. s .. "_5_desc" and "You gain ##45%## chance to automatically revive during bleedout."
 or string_id == "menu_deck" .. s .. "_6" and "Walk-in Closet"
 or string_id == "menu_deck" .. s .. "_6_desc" and "Unlocks an armor bag equipment for you to use. The armor bag can be used to change your armor during a heist.\n\nIncreases your ammo pickup to ##135%## of the normal rate."
 or string_id == "menu_deck" .. s .. "_7" and "Murderspree"

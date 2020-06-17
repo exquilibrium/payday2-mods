@@ -33,14 +33,22 @@ if RequiredScript == "lib/managers/playermanager" then
         if upgrade == "berserker_damage_multiplier" and self:has_category_upgrade("temporary", "berserker_time_increase") then
             if self:has_category_upgrade("temporary", "swan_song_aced") then
                 if (self._temporary_upgrades[category][upgrade].expire_time + berserker_t) > (Application:time() + self:upgrade_value("temporary", "berserker_time_increase")) then
-                    berserker_t = Application:time() + self:upgrade_value("temporary", "berserker_time_increase") - self._temporary_upgrades[category][upgrade].expire_time
+                    self._temporary_upgrades[category][upgrade].expire_time = Application:time() + self:upgrade_value("temporary", "berserker_time_increase")
+                    berserker_t = 0
+                else 
+                    self._temporary_upgrades[category][upgrade].expire_time = self._temporary_upgrades[category][upgrade].expire_time + berserker_t
+                    berserker_t = 0
                 end
-                return Application:time() < (self._temporary_upgrades[category][upgrade].expire_time + self:upgrade_value_by_level("temporary", "berserker_damage_multiplier", 2)[2] + berserker_t)
+                return Application:time() < (self._temporary_upgrades[category][upgrade].expire_time + self:upgrade_value_by_level("temporary", "berserker_damage_multiplier", 2)[2])
             elseif self:has_category_upgrade("temporary", "swan_song_basic") then
                 if (self._temporary_upgrades[category][upgrade].expire_time + berserker_t) > (Application:time() + self:upgrade_value("temporary", "berserker_time_increase")) then
-                    berserker_t = Application:time() + self:upgrade_value("temporary", "berserker_time_increase") - self._temporary_upgrades[category][upgrade].expire_time
+                    self._temporary_upgrades[category][upgrade].expire_time = Application:time() + self:upgrade_value("temporary", "berserker_time_increase")
+                    berserker_t = 0
+                else 
+                    self._temporary_upgrades[category][upgrade].expire_time = self._temporary_upgrades[category][upgrade].expire_time + berserker_t
+                    berserker_t = 0
                 end
-                return Application:time() < (self._temporary_upgrades[category][upgrade].expire_time + self:upgrade_value_by_level("temporary", "berserker_damage_multiplier", 1)[2] + berserker_t)
+                return Application:time() < (self._temporary_upgrades[category][upgrade].expire_time + self:upgrade_value_by_level("temporary", "berserker_damage_multiplier", 1)[2])
             end
         end
 
@@ -193,11 +201,11 @@ if RequiredScript == "lib/units/beings/player/playerdamage" then
                 --
                 if managers.player:has_category_upgrade("temporary", "berserker_time_increase") then
                     if managers.player:has_category_upgrade("temporary", "swan_song_aced") then
-                        expire_time = expire_time + managers.player:upgrade_value_by_level("temporary", "berserker_damage_multiplier", 2)[2] + berserker_t
-                        total_time = total_time + managers.player:upgrade_value_by_level("temporary", "berserker_damage_multiplier", 2)[2] + berserker_t
+                        expire_time = expire_time + managers.player:upgrade_value_by_level("temporary", "berserker_damage_multiplier", 2)[2]
+                        total_time = total_time + managers.player:upgrade_value_by_level("temporary", "berserker_damage_multiplier", 2)[2]
                     elseif  managers.player:has_category_upgrade("temporary", "swan_song_basic") then
-                        expire_time = expire_time + managers.player:upgrade_value_by_level("temporary", "berserker_damage_multiplier", 1)[2] + berserker_t
-                        total_time = total_time + managers.player:upgrade_value_by_level("temporary", "berserker_damage_multiplier", 1)[2] + berserker_t
+                        expire_time = expire_time + managers.player:upgrade_value_by_level("temporary", "berserker_damage_multiplier", 1)[2]
+                        total_time = total_time + managers.player:upgrade_value_by_level("temporary", "berserker_damage_multiplier", 1)[2]
                     end
                 end
                 --

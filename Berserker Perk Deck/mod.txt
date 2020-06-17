@@ -4,6 +4,7 @@
 	"author"   :   "MrChen",
 	"image"	: "berserker.png"
 	"version" : "0.1",
+	"priority" : 3,
 	"hooks"	:   [
 		{ "hook_id"	: "lib/tweak_data/skilltreetweakdata", "script_path" : "lua/skilltree.lua" },
 
