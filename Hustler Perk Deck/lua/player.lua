@@ -61,7 +61,7 @@ if RequiredScript == "lib/managers/playermanager" then
 
 			--------------------------------------------- Hustler armor regen
 			local damage_ext = player_unit:character_damage()
-				regen_armor_bonus = last_dmg * self:upgrade_value("player", "hustler_kill_armor", 0)[difficulty_index]
+			local regen_armor_bonus = last_dmg * self:upgrade_value("player", "hustler_kill_armor", 0)[difficulty_index]
 			---------------------------------------------
 
 			local dist_sq = mvector3.distance_sq(player_unit:movement():m_pos(), killed_unit:movement():m_pos())

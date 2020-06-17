@@ -1,5 +1,5 @@
 Hooks:PostHook(SkillTreeTweakData, "init", "hustler_skilltree_init", function(self, tweak_data)
-	local s = tostring(table.maxn(self.specializations) + 1)
+	local s = table.maxn(self.specializations) + 1
 
 	-- Perk deck costs
 	local pdc1 = 0
