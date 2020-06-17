@@ -1,0 +1,14 @@
+{
+	"name" : "Remove Skill Costs",
+	"description" : "Removes Skill Costs",
+	"author" : "Mr.Chen",
+	"contact" : "",
+	"version" : "1.0",
+	"hooks" : [
+
+		{ "hook_id" : "lib/tweak_data/skilltreetweakdata", "script_path" : "sttd.lua" }
+		
+		{ "hook_id" : "lib/managers/skilltreemanager", "script_path" : "stm.lua" }
+
+	]
+}
