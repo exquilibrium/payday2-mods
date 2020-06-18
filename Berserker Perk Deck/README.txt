@@ -13,7 +13,7 @@ You gain 6 seconds of Swan Song duration.
 Your movement speed is increasd by 40% during Swan Song.
 
 -------------------------------------------------- 3
-Damaging enemies increases Swan Song duration by 1 second.
+Damaging enemies increases Swan Song duration by 0.7 second and additional 0.05 seconds for each armor tier above 2-Piece Suit.
 0.5 seconds cooldown
 
 (Swan Song duration can not increase above your maximum Swan Song duration.)
@@ -22,7 +22,7 @@ Damaging enemies increases Swan Song duration by 1 second.
 You gain ##45%## chance to automatically revive during bleedout.
 
 -------------------------------------------------- 7
-Killing enemies increases Swan Song duration by 1.5 seconds.
+Killing enemies increases Swan Song duration by 0.5 seconds.
 1 second cooldown
 
 (Swan Song duration can not increase above your maximum Swan Song duration.)

@@ -16,12 +16,12 @@ Hooks:PostHook(UpgradesTweakData, "init", "berserker_upgrades_init", function(se
 	--3
 	self.values.player.berserker_time_on_damage = { --<-- Swan Song duration gained per damage dealt; format { <seconds gaind>, <cooldown in seconds> }
 		{
-			{ 1.0, 0.5 }, --<-- Suit
-			{ 1.0, 0.5 }, --<-- LBV
-			{ 1.0, 0.5 }, --<-- BV
-			{ 1.0, 0.5 }, --<-- HBV
-			{ 1.0, 0.5 }, --<-- Flak Jacket
-			{ 1.0, 0.5 }, --<-- CTV
+			{ 0.7, 0.5 }, --<-- Suit
+			{ 0.75, 0.5 }, --<-- LBV
+			{ 0.8, 0.5 }, --<-- BV
+			{ 0.85, 0.5 }, --<-- HBV
+			{ 0.9, 0.5 }, --<-- Flak Jacket
+			{ 0.95, 0.5 }, --<-- CTV
 			{ 1.0, 0.5 } --<-- ICTV
 		}
 	}
@@ -30,7 +30,7 @@ Hooks:PostHook(UpgradesTweakData, "init", "berserker_upgrades_init", function(se
 	self.values.player.berserker_cheat_death_chance = { 0.45 } --<-- Additional auto-revive chance (Stacks with skill)
 
 	--7
-	self.values.player.berserker_time_on_killshot = { 1.5 } --<-- Swan Song duration gained per kill, cooldown 1s
+	self.values.player.berserker_time_on_killshot = { 0.5 } --<-- Swan Song duration gained per kill, cooldown 1s
 
 	--9
 	self.values.player.berserker_lives = { 4 } --<-- Additional lives before going into arrest
