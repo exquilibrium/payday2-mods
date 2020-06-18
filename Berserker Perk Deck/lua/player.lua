@@ -1,11 +1,18 @@
-berserker_t = 0 -- do NOT make this local
+berserker_t = 0 -- do NOT make local --<-- variable to store additional Swan Song duration gained from damaging/kills
 
---[[
-####################################################################################################
-################################################## PlayerManager
-####################################################################################################
-]]--
+----------------------------------------------------------------------------------------------------[[ PlayerManager ]]
 if RequiredScript == "lib/managers/playermanager" then
+    ---------------------------------------------------------------------------------------------------- Fixes display of health in menu
+	local old_health_func = PlayerManager.health_skill_multiplier
+	function PlayerManager:health_skill_multiplier()
+		local multiplier = old_health_func(self)
+
+		if self:has_category_upgrade("player", "berserker_health") then
+			multiplier = multiplier - self:upgrade_value("player", "berserker_health", 0)
+		end
+
+		return multiplier
+	end
     ---------------------------------------------------------------------------------------------------- Berserk Time on killshot
     Hooks:PreHook(PlayerManager, "on_killshot", "beserker_on_killshot", function(self, killed_unit, variant, headshot, weapon_id)
         if self:has_category_upgrade("player", "berserker_time_on_killshot") then
@@ -14,6 +21,9 @@ if RequiredScript == "lib/managers/playermanager" then
     end)
 
     ---------------------------------------------------------------------------------------------------- Swan Song Activity
+    --[[
+    Checks if Swan Song is still active
+    ]]
     function PlayerManager:has_activate_temporary_upgrade(category, upgrade)
         local upgrade_value = self:upgrade_value(category, upgrade)
     
@@ -30,29 +40,30 @@ if RequiredScript == "lib/managers/playermanager" then
         end
 
         -------------------------------------------------- Swan Song is active. berserker_t fills the difference + the bonus time exists in update_t
+        local local_t = Application:time() --<-- Might be more efficient
         if upgrade == "berserker_damage_multiplier" and self:has_category_upgrade("temporary", "berserker_time_increase") then
             if self:has_category_upgrade("temporary", "swan_song_aced") then
-                if (self._temporary_upgrades[category][upgrade].expire_time + berserker_t) > (Application:time() + self:upgrade_value("temporary", "berserker_time_increase")) then
-                    self._temporary_upgrades[category][upgrade].expire_time = Application:time() + self:upgrade_value("temporary", "berserker_time_increase")
+                if (self._temporary_upgrades[category][upgrade].expire_time + berserker_t) > (local_t + self:upgrade_value("temporary", "berserker_time_increase")) then
+                    self._temporary_upgrades[category][upgrade].expire_time = local_t + self:upgrade_value("temporary", "berserker_time_increase")
                     berserker_t = 0
                 else 
                     self._temporary_upgrades[category][upgrade].expire_time = self._temporary_upgrades[category][upgrade].expire_time + berserker_t
                     berserker_t = 0
                 end
-                return Application:time() < (self._temporary_upgrades[category][upgrade].expire_time + self:upgrade_value_by_level("temporary", "berserker_damage_multiplier", 2)[2])
+                return local_t < (self._temporary_upgrades[category][upgrade].expire_time + self:upgrade_value_by_level("temporary", "berserker_damage_multiplier", 2)[2])
             elseif self:has_category_upgrade("temporary", "swan_song_basic") then
-                if (self._temporary_upgrades[category][upgrade].expire_time + berserker_t) > (Application:time() + self:upgrade_value("temporary", "berserker_time_increase")) then
-                    self._temporary_upgrades[category][upgrade].expire_time = Application:time() + self:upgrade_value("temporary", "berserker_time_increase")
+                if (self._temporary_upgrades[category][upgrade].expire_time + berserker_t) > (local_t + self:upgrade_value("temporary", "berserker_time_increase")) then
+                    self._temporary_upgrades[category][upgrade].expire_time = local_t + self:upgrade_value("temporary", "berserker_time_increase")
                     berserker_t = 0
                 else 
                     self._temporary_upgrades[category][upgrade].expire_time = self._temporary_upgrades[category][upgrade].expire_time + berserker_t
                     berserker_t = 0
                 end
-                return Application:time() < (self._temporary_upgrades[category][upgrade].expire_time + self:upgrade_value_by_level("temporary", "berserker_damage_multiplier", 1)[2])
+                return local_t < (self._temporary_upgrades[category][upgrade].expire_time + self:upgrade_value_by_level("temporary", "berserker_damage_multiplier", 1)[2])
             end
         end
 
-        return Application:time() < self._temporary_upgrades[category][upgrade].expire_time
+        return local_t < self._temporary_upgrades[category][upgrade].expire_time
     end
     
     ---------------------------------------------------------------------------------------------------- Berserker Movement
@@ -61,18 +72,14 @@ if RequiredScript == "lib/managers/playermanager" then
         multiplier = old_speed_func(self, speed_state, bonus_multiplier, upgrade_level, health_ratio)
         
         if managers.player:has_activate_temporary_upgrade("temporary", "berserker_damage_multiplier") then
-            multiplier = multiplier + self:upgrade_value("temporary", "berserker_movement")
+            return multiplier + self:upgrade_value("temporary", "berserker_movement")
         end
 
         return multiplier
     end
 end
 
---[[
-####################################################################################################
-################################################## PlayerDamage
-####################################################################################################
-]]--
+----------------------------------------------------------------------------------------------------[[ PlayerDamage ]]
 if RequiredScript == "lib/units/beings/player/playerdamage" then
     ---------------------------------------------------------------------------------------------------- Init Berserker time on damage
     local old_init = PlayerDamage.init
@@ -198,6 +205,7 @@ if RequiredScript == "lib/units/beings/player/playerdamage" then
                 local expire_time = managers.player:get_activate_temporary_expire_time("temporary", "berserker_damage_multiplier")
                 local total_time = managers.player:upgrade_value("temporary", "berserker_damage_multiplier")
                 total_time = total_time and total_time[2] or 0
+
                 --
                 if managers.player:has_category_upgrade("temporary", "berserker_time_increase") then
                     if managers.player:has_category_upgrade("temporary", "swan_song_aced") then
@@ -330,7 +338,7 @@ if RequiredScript == "lib/units/beings/player/playerdamage" then
     
         self._said_hurt = false
     
-        if math.rand(1) < managers.player:upgrade_value("first_aid_kit", "downs_restore_chance", 0) then
+        if math.rand(1) < managers.player:upgrade_value("first_aid_kit", "downs_restore_chance", 0) then --<-- Unused player upgrade that makes first aid kit restore downs with 10% chance
             self._revives = Application:digest_value(math.min(self._lives_init + managers.player:upgrade_value("player", "additional_lives", 0) + managers.player:upgrade_value("player", "berserker_lives", 0), Application:digest_value(self._revives, false) + 1), true)
             self._revive_health_i = math.max(self._revive_health_i - 1, 1)
     

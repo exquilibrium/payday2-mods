@@ -17,7 +17,8 @@ Hooks:PostHook(SkillTreeTweakData, "init", "berserker_skilltree_init", function(
 		desc_id = "menu_st_spec_" .. s .. "_desc",
 		{
 			upgrades = {		--1
-								--
+								-- Health reduction, Activate Swan Song, Swan Song time, Swan Song movement bonus
+				"berserker_health",
 				"berserker_swan_song",
 				"berserker_time_increase",
 				"berserker_movement"
@@ -40,7 +41,7 @@ Hooks:PostHook(SkillTreeTweakData, "init", "berserker_skilltree_init", function(
 			
 		{
 			upgrades = {		--3
-								--
+								-- Swan Song duration on damage dealt
 				"berserker_time_on_damage"
 			},
 			cost = pdc3,
@@ -63,7 +64,7 @@ Hooks:PostHook(SkillTreeTweakData, "init", "berserker_skilltree_init", function(
 			
 		{
 			upgrades = {		--5
-								--
+								-- Auto-revive
 				"berserker_cheat_death_chance"
 			},
 			cost = pdc5,
@@ -85,7 +86,7 @@ Hooks:PostHook(SkillTreeTweakData, "init", "berserker_skilltree_init", function(
 			
 		{
 			upgrades = {		--7
-								--
+								-- Swan Song duration on kill
 				"berserker_time_on_killshot"
 			},
 			cost = pdc7,
@@ -107,7 +108,7 @@ Hooks:PostHook(SkillTreeTweakData, "init", "berserker_skilltree_init", function(
 			
 		{
 			upgrades = {		--9
-								--
+								-- Additional lives
 				"berserker_lives",
 				"player_passive_loot_drop_multiplier"	
 			},
