@@ -11,18 +11,18 @@ Hooks:PostHook(UpgradesTweakData, "init", "berserker_upgrades_init", function(se
 	local v1 = table.maxn(self.values.temporary.berserker_damage_multiplier) + 1
 	self.values.temporary.berserker_damage_multiplier[v1] = { 1, swan_song_t } --<-- Stores Swan Song duration in original Swan Song table, also need to activate Swan Song when only having perk deck equipped
 	self.values.temporary.berserker_time_increase = { swan_song_t } --<-- Stores Swan Song duration, needed to calculate perk deck Swan Song stacked with Swan Song skill
-	self.values.temporary.berserker_movement = { 1 } --<-- Movement bonus added during Swan Song (normal Swan Song 40% movement speed, with perk deck 100% + 40% = 140% movement speed) 
+	self.values.temporary.berserker_movement = { 0.9 } --<-- Movement bonus added during Swan Song (normal Swan Song 30% movement speed, with perk deck 100% + 40% = 140% movement speed) 
 
 	--3
-	self.values.player.berserker_time_on_damage = { --<-- Swan Song duration gained per damage dealt; format { <seconds gaind>, <cooldown in seconds> }
+	self.values.player.berserker_time_on_damage = { --<-- Swan Song duration gained per damage dealt; format { <seconds gained>, <cooldown in seconds> }
 		{
-			{ 0.7, 0.5 }, --<-- Suit
-			{ 0.75, 0.5 }, --<-- LBV
-			{ 0.8, 0.5 }, --<-- BV
-			{ 0.85, 0.5 }, --<-- HBV
-			{ 0.9, 0.5 }, --<-- Flak Jacket
-			{ 0.95, 0.5 }, --<-- CTV
-			{ 1.0, 0.5 } --<-- ICTV
+			{ 0.70, 0.5 }, --<-- Suit
+			{ 0.725, 0.5 }, --<-- LBV
+			{ 0.75, 0.5 }, --<-- BV
+			{ 0.775, 0.5 }, --<-- HBV
+			{ 0.8, 0.5 }, --<-- Flak Jacket
+			{ 0.825, 0.5 }, --<-- CTV
+			{ 0.85, 0.5 } --<-- ICTV
 		}
 	}
 

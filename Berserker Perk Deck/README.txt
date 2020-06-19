@@ -10,10 +10,10 @@ Your health is reduced to 1.
 Upon dieing you will enter Swan Song.
 You gain 6 seconds of Swan Song duration.
 
-Your movement speed is increasd by 40% during Swan Song.
+Your movement speed is increasd by 30% during Swan Song.
 
 -------------------------------------------------- 3
-Damaging enemies increases Swan Song duration by 0.7 second and additional 0.05 seconds for each armor tier above 2-Piece Suit.
+Damaging enemies increases Swan Song duration by 0.7 second and additional 0.025 seconds for each armor tier above 2-Piece Suit.
 0.5 seconds cooldown
 
 (Swan Song duration can not increase above your maximum Swan Song duration.)
@@ -28,7 +28,7 @@ Killing enemies increases Swan Song duration by 0.5 seconds.
 (Swan Song duration can not increase above your maximum Swan Song duration.)
 
 -------------------------------------------------- 9
-You gain additional 4 lives before going into arrest.
+You gain additional 4 lives before going in custody.
 
 ### Fix Perk Deck Description ###
 - If you have other costum perk decks, this perk deck might have the wrong description

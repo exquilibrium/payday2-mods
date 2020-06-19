@@ -1,4 +1,4 @@
-local s = "23"
+local s = "22"
 
 local text_original = LocalizationManager.text
 function LocalizationManager:text(string_id, ...)
