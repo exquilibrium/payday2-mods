@@ -1,7 +1,7 @@
 {
 	"name"	:   "Sicario Perk Deck Buff",
-	"description"	:   "Sicario is buff",
-	"author"   :   "MrChen",
+	"description"	:   "Modified version of DrNewbie's Sicario Perk Deck Buff",
+	"author"   :   "DrNewbie and Mr.Chen",
 	"version" : "1.0",
 	"blt_version": 2,
   	"hooks": [
