@@ -2,7 +2,6 @@
 	"name" : "Remove Infamy Tiers",
 	"description" : "Removes requirements for infamy tiers",
 	"author" : "Mr.Chen",
-	"contact" : "",
 	"version" : "1.0",
 	"blt_version" : 2,
 
