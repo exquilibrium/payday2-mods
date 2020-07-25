@@ -1,7 +1,7 @@
 Information about this mod
-- Description
-- Fix Perk Deck Description
-- Tweaking this mod
+-Description
+-Fix Perk Deck Description
+-Tweaking this mod
 
 ### Description ###
 -------------------------------------------------- 1
