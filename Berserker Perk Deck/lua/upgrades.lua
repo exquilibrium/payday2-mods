@@ -64,7 +64,7 @@ Hooks:PostHook(UpgradesTweakData, "init", "berserker_upgrades_init", function(se
 		name_id = "menu_player_armor_regen_timer_multiplier_passive",
 		category = "feature",
 		upgrade = {
-			value = v2,
+			value = v0,
 			upgrade = "armor_regen_timer_multiplier_passive",
 			category = "player"
 		}
