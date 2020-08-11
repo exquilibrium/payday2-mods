@@ -5,6 +5,8 @@ Information about this mod
 
 ### Description ###
 -------------------------------------------------- 1
+Your armor no longer regenerates.
+
 Your health is reduced to 1.
 
 Upon dieing you will enter Swan Song.

@@ -5,7 +5,7 @@ function LocalizationManager:text(string_id, ...)
 return string_id == "menu_st_spec_" .. s and "Berserker"
 or string_id == "menu_st_spec_" .. s .. "_desc" and "BERSERK TIME!!!"
 or string_id == "menu_deck" .. s .. "_1" and "Going Berserk"
-or string_id == "menu_deck" .. s .. "_1_desc" and "Your health is reduced to ##1##.\n\nUpon dieing you will enter Swan Song.\nYou gain ##6## seconds of Swan Song duration.\n\nYour movement speed is increasd by ##30%## during Swan Song."
+or string_id == "menu_deck" .. s .. "_1_desc" and "Your armor no longer regenerates.\n\nYour health is reduced to ##1##.\n\nUpon dieing you will enter Swan Song.\nYou gain ##6## seconds of Swan Song duration.\n\nYour movement speed is increasd by ##30%## during Swan Song."
 or string_id == "menu_deck" .. s .. "_2" and "Helmet Popping"
 or string_id == "menu_deck" .. s .. "_2_desc" and "Increases your headshot damage by ##25%##."
 or string_id == "menu_deck" .. s .. "_3" and "Continuous Rage"

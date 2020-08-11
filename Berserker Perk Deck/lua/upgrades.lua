@@ -60,7 +60,7 @@ Hooks:PostHook(UpgradesTweakData, "init", "berserker_upgrades_init", function(se
 	}
 
 	--1
-	self.definitions.berserkerNoArmor = {
+	self.definitions.berserker_armor = {
 		name_id = "menu_player_armor_regen_timer_multiplier_passive",
 		category = "feature",
 		upgrade = {
