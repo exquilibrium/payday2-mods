@@ -18,6 +18,7 @@ Hooks:PostHook(SkillTreeTweakData, "init", "berserker_skilltree_init", function(
 		{
 			upgrades = {		--1
 								-- Health reduction, Activate Swan Song, Swan Song time, Swan Song movement bonus
+				"berserker_armor",
 				"berserker_health",
 				"berserker_swan_song",
 				"berserker_time_increase",

@@ -6,6 +6,8 @@ Hooks:PostHook(UpgradesTweakData, "init", "berserker_upgrades_init", function(se
 	self.values.temporary.swan_song_aced = { 1 } --<-- Dummy variable needed to make Swan Song skill work with perk deck
 
 	--1
+	local v0 = table.maxn(self.values.player.armor_regen_timer_multiplier_passive) + 1
+	self.values.player.armor_regen_timer_multiplier_passive[v0] = 1000000 --<-- multiplier to practically disable armor regeneration
 	self.values.player.berserker_health = { 229/230 } --<-- Multiplier for your health
 	local swan_song_t = 6 --<-- Additional Swan Song duration (stacks with Swan Song skill)
 	local v1 = table.maxn(self.values.temporary.berserker_damage_multiplier) + 1
@@ -58,6 +60,15 @@ Hooks:PostHook(UpgradesTweakData, "init", "berserker_upgrades_init", function(se
 	}
 
 	--1
+	self.definitions.berserkerNoArmor = {
+		name_id = "menu_player_armor_regen_timer_multiplier_passive",
+		category = "feature",
+		upgrade = {
+			value = v2,
+			upgrade = "armor_regen_timer_multiplier_passive",
+			category = "player"
+		}
+	}
 	self.definitions.berserker_health = {
 		name_id = "menu_player_berserker_health",
 		category = "feature",
