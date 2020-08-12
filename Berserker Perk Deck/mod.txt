@@ -3,7 +3,7 @@
 	"description"	:   "BERZERK - https://www.youtube.com/watch?v=ab9176Srb5Y",
 	"author"   :   "MrChen",
 	"image"	: "berserker.png"
-	"version" : "1.71",
+	"version" : "1.8",
 	"priority" : 3,
 	"hooks"	:   [
 		{ "hook_id"	: "lib/tweak_data/skilltreetweakdata", "script_path" : "lua/skilltree.lua" },

@@ -1,4 +1,7 @@
 berserker_t = 0 -- do NOT make local --<-- variable to store additional Swan Song duration gained from damaging/kills
+time_decrease = 1.0 -- do NOT make local --<-- variable storing decrease value of Swan Song duration gained from damaging/kills
+decrease_value = 0.01 -- do NOT make local --<-- variable to sets the percentual amount Swan Song duration gained from damaging/kills gets decreased
+-- ^^^ Change this decrease_value to set the percentual decrease of gained Swan Song time -- example 0.01 == 1%, 0.1 == 10%, 0.05 == 5%, 0.5 == 50%
 
 ----------------------------------------------------------------------------------------------------[[ PlayerManager ]]
 if RequiredScript == "lib/managers/playermanager" then
@@ -16,7 +19,7 @@ if RequiredScript == "lib/managers/playermanager" then
     ---------------------------------------------------------------------------------------------------- Berserk Time on killshot
     Hooks:PreHook(PlayerManager, "on_killshot", "beserker_on_killshot", function(self, killed_unit, variant, headshot, weapon_id)
         if self:has_category_upgrade("player", "berserker_time_on_killshot") then
-            berserker_t = berserker_t + self:upgrade_value("player", "berserker_time_on_killshot")
+            berserker_t = berserker_t + self:upgrade_value("player", "berserker_time_on_killshot") * time_decrease
         end
     end)
 
@@ -110,7 +113,7 @@ if RequiredScript == "lib/units/beings/player/playerdamage" then
                         if self._damage_to_armor.target_tick < time - self._damage_to_armor.elapsed then
                             self._damage_to_armor.elapsed = time
     
-                            berserker_t = berserker_t + self._damage_to_armor.armor_value
+                            berserker_t = berserker_t + self._damage_to_armor.armor_value * time_decrease
                         end
                     end
                 end
@@ -371,6 +374,7 @@ if RequiredScript == "lib/units/beings/player/playerdamage" then
             local r = math.rand(1)
     
             if r <= (managers.player:upgrade_value("player", "cheat_death_chance", 0) + managers.player:upgrade_value("player", "berserker_cheat_death_chance", 0)) then
+                time_decrease = time_decrease - decrease_value --<-- decrease the time gained from berserker damage/kills by decrease_value for each down
                 self._auto_revive_timer = 1
             end
         end
