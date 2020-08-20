@@ -45,23 +45,19 @@ if RequiredScript == "lib/managers/playermanager" then
         -------------------------------------------------- Swan Song is active. berserker_t fills the difference + the bonus time exists in update_t
         local local_t = Application:time() --<-- Might be more efficient
         if upgrade == "berserker_damage_multiplier" and self:has_category_upgrade("temporary", "berserker_time_increase") then
+            -------------------------------------------------- Add berserker_t time up to maximum swan song time
+            if (self._temporary_upgrades[category][upgrade].expire_time + berserker_t) > (local_t + self:upgrade_value("temporary", "berserker_time_increase")) then
+                self._temporary_upgrades[category][upgrade].expire_time = local_t + self:upgrade_value("temporary", "berserker_time_increase")
+                berserker_t = 0
+            else 
+                self._temporary_upgrades[category][upgrade].expire_time = self._temporary_upgrades[category][upgrade].expire_time + berserker_t
+                berserker_t = 0
+            end
+            -------------------------------------------------- Return corrected time in case you have swan song base/aced
             if self:has_category_upgrade("temporary", "swan_song_aced") then
-                if (self._temporary_upgrades[category][upgrade].expire_time + berserker_t) > (local_t + self:upgrade_value("temporary", "berserker_time_increase")) then
-                    self._temporary_upgrades[category][upgrade].expire_time = local_t + self:upgrade_value("temporary", "berserker_time_increase")
-                    berserker_t = 0
-                else 
-                    self._temporary_upgrades[category][upgrade].expire_time = self._temporary_upgrades[category][upgrade].expire_time + berserker_t
-                    berserker_t = 0
-                end
                 return local_t < (self._temporary_upgrades[category][upgrade].expire_time + self:upgrade_value_by_level("temporary", "berserker_damage_multiplier", 2)[2])
-            elseif self:has_category_upgrade("temporary", "swan_song_basic") then
-                if (self._temporary_upgrades[category][upgrade].expire_time + berserker_t) > (local_t + self:upgrade_value("temporary", "berserker_time_increase")) then
-                    self._temporary_upgrades[category][upgrade].expire_time = local_t + self:upgrade_value("temporary", "berserker_time_increase")
-                    berserker_t = 0
-                else 
-                    self._temporary_upgrades[category][upgrade].expire_time = self._temporary_upgrades[category][upgrade].expire_time + berserker_t
-                    berserker_t = 0
-                end
+            end
+            if self:has_category_upgrade("temporary", "swan_song_basic") then
                 return local_t < (self._temporary_upgrades[category][upgrade].expire_time + self:upgrade_value_by_level("temporary", "berserker_damage_multiplier", 1)[2])
             end
         end

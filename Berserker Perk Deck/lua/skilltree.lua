@@ -119,9 +119,10 @@ Hooks:PostHook(SkillTreeTweakData, "init", "berserker_skilltree_init", function(
 			desc_id = "menu_deck" .. s .. "_9_desc"
 		}
 	})
-
+	
 	local t1 = table.maxn(self.skills.perseverance[1].upgrades) + 1
 	local t2 = table.maxn(self.skills.perseverance[2].upgrades) + 1
 	self.skills.perseverance[1].upgrades[t1] = "swan_song_basic"
 	self.skills.perseverance[2].upgrades[t2] = "swan_song_aced"
+
 end)
