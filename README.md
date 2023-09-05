@@ -1,5 +1,4 @@
-# payday2-stuff
-Payday 2 mods
+# Payday 2 mods
 
 Source Code: https://github.com/mwSora/payday-2-luajit
 
